@@ -75,6 +75,17 @@
             padding: 15px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
+        
+        .reception-header {
+            grid-column: 1 / -1;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #dc3545;
+            margin-top: 15px;
+            margin-bottom: -5px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(220, 53, 69, 0.2);
+        }
 
         .form-group label {
             display: block;
@@ -274,7 +285,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .score-circle::before {
@@ -300,6 +311,13 @@
             margin-bottom: 4px;
         }
 
+        .score-category {
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-bottom: 4px;
+            color: #e9ecef;
+        }
+
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -321,7 +339,7 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            margin: 0 auto 8px;
+            margin: 0 auto 4px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -343,6 +361,13 @@
             font-size: 0.95em;
             font-weight: bold;
             color: #dc3545;
+        }
+        
+        .metric-category {
+            font-size: 0.7em;
+            font-weight: bold;
+            margin-bottom: 4px;
+            color: #e9ecef;
         }
 
         .metric-label {
@@ -424,17 +449,27 @@
 
         .platform-fill {
             height: 100%;
-            background: linear-gradient(90deg, #dc3545, #c82333);
             border-radius: 8px;
-            transition: width 0.8s ease;
+            transition: width 0.8s ease, background 0.5s ease;
         }
 
         .platform-value {
-            color: #dc3545;
             font-weight: bold;
-            min-width: 30px;
+            min-width: 90px;
             font-size: 0.85em;
             text-align: right;
+            display: flex;
+            align-items: baseline;
+            justify-content: flex-end;
+            gap: 5px;
+            color: #dc3545;
+        }
+
+        .platform-category {
+            font-size: 0.8em;
+            font-weight: normal;
+            opacity: 0.8;
+            color: #e9ecef;
         }
 
         .footer {
@@ -451,16 +486,6 @@
             color: #6c757d;
             font-size: 0.65em;
             line-height: 1.2;
-        }
-
-        .no-data {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: #6c757d;
-            font-style: italic;
-            font-size: 0.8em;
         }
 
         .hidden {
@@ -535,14 +560,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="messageReception">Media Message Reception Analysis (%)</label>
-                        <div class="slider-group">
-                            <input type="range" id="messageReception" name="messageReception" min="0" max="100" value="50" class="slider">
-                            <input type="number" id="messageReceptionInput" min="0" max="100" value="50" class="form-input">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label for="appUsage">Media Application Usage Analysis (%)</label>
                         <div class="slider-group">
                             <input type="range" id="appUsage" name="appUsage" min="0" max="100" value="50" class="slider">
@@ -557,6 +574,57 @@
                             <input type="number" id="messageProficiencyInput" min="0" max="100" value="50" class="form-input">
                         </div>
                     </div>
+
+                    <h3 class="reception-header">Media Message Reception Analysis</h3>
+
+                    <div class="form-group">
+                        <label for="learning">1. Learning (%)</label>
+                        <div class="slider-group">
+                            <input type="range" id="learning" name="learning" min="0" max="100" value="50" class="slider">
+                            <input type="number" id="learningInput" min="0" max="100" value="50" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productivity">2. Productivity (%)</label>
+                        <div class="slider-group">
+                            <input type="range" id="productivity" name="productivity" min="0" max="100" value="50" class="slider">
+                            <input type="number" id="productivityInput" min="0" max="100" value="50" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="utility">3. Utility and Services (%)</label>
+                        <div class="slider-group">
+                            <input type="range" id="utility" name="utility" min="0" max="100" value="50" class="slider">
+                            <input type="number" id="utilityInput" min="0" max="100" value="50" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gaming">4. Gaming (%)</label>
+                        <div class="slider-group">
+                            <input type="range" id="gaming" name="gaming" min="0" max="100" value="50" class="slider">
+                            <input type="number" id="gamingInput" min="0" max="100" value="50" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="socialMedia">5. Social Media (%)</label>
+                        <div class="slider-group">
+                            <input type="range" id="socialMedia" name="socialMedia" min="0" max="100" value="50" class="slider">
+                            <input type="number" id="socialMediaInput" min="0" max="100" value="50" class="form-input">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="information">6. Information (%)</label>
+                        <div class="slider-group">
+                            <input type="range" id="information" name="information" min="0" max="100" value="50" class="slider">
+                            <input type="number" id="informationInput" min="0" max="100" value="50" class="form-input">
+                        </div>
+                    </div>
+
 
                     <div class="form-group">
                         <label for="authenticity">Authenticity of Media Messages</label>
@@ -579,6 +647,24 @@
                         <div class="slider-group">
                             <input type="range" id="reliability" name="reliability" min="0" max="100" value="50" class="slider">
                             <input type="number" id="reliabilityInput" min="0" max="100" value="50" class="form-input">
+                        </div>
+                    </div>
+                    
+                    <h3 class="reception-header">Media Platform Analysis</h3>
+
+                    <div class="form-group">
+                        <label for="mediaAppLoad">1. Media Application Load (%)</label>
+                        <div class="slider-group">
+                            <input type="range" id="mediaAppLoad" name="mediaAppLoad" min="0" max="100" value="50" class="slider">
+                            <input type="number" id="mediaAppLoadInput" min="0" max="100" value="50" class="form-input">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mediaUsageLoad">2. Media Usage Load (%)</label>
+                        <div class="slider-group">
+                            <input type="range" id="mediaUsageLoad" name="mediaUsageLoad" min="0" max="100" value="50" class="slider">
+                            <input type="number" id="mediaUsageLoadInput" min="0" max="100" value="50" class="form-input">
                         </div>
                     </div>
                 </div>
@@ -618,7 +704,7 @@
                 <div class="score-circle" id="overallScoreCircle">
                     <div class="score-text" id="overallScoreText">0%</div>
                 </div>
-                <div style="color: #adb5bd; font-size: 0.75em;">Media Usage and<br>Dependance Analysis</div>
+                <div class="score-category" id="overallScoreCategory">-</div>
             </div>
         </div>
 
@@ -627,24 +713,28 @@
                 <div class="metric-circle" id="timeSpentCircle">
                     <div class="metric-value" id="timeSpentDisplay">0%</div>
                 </div>
+                <div class="metric-category" id="timeSpentCategory">-</div>
                 <div class="metric-label">Time spent with<br>Media</div>
             </div>
             <div class="metric-card">
                 <div class="metric-circle" id="messageReceptionCircle">
                     <div class="metric-value" id="messageReceptionDisplay">0%</div>
                 </div>
+                 <div class="metric-category" id="messageReceptionCategory">-</div>
                 <div class="metric-label">Media Message<br>Reception Analysis</div>
             </div>
             <div class="metric-card">
                 <div class="metric-circle" id="appUsageCircle">
                     <div class="metric-value" id="appUsageDisplay">0%</div>
                 </div>
+                <div class="metric-category" id="appUsageCategory">-</div>
                 <div class="metric-label">Media Applications<br>Usage Analysis</div>
             </div>
             <div class="metric-card">
                 <div class="metric-circle" id="messageProficiencyCircle">
                     <div class="metric-value" id="messageProficiencyDisplay">0%</div>
                 </div>
+                <div class="metric-category" id="messageProficiencyCategory">-</div>
                 <div class="metric-label">Media Message<br>Proficiency</div>
             </div>
         </div>
@@ -658,33 +748,44 @@
             </div>
 
             <div class="chart-container">
-                <div class="chart-title">Media Message Proficiency</div>
-                <div class="no-data">No data to display</div>
+                <div class="chart-title">Media Platform Analysis</div>
+                <div class="chart-canvas">
+                    <canvas id="platformChart"></canvas>
+                </div>
             </div>
         </div>
 
         <div class="chart-container platform-analysis">
-            <div class="chart-title">Media Platform Analysis</div>
+            <div class="chart-title">Media Message Proficiency</div>
             <div class="platform-item">
                 <div class="platform-label">Authenticity of Media Messages</div>
                 <div class="platform-bar">
                     <div class="platform-fill" id="authenticityBar" style="width: 0%;"></div>
                 </div>
-                <div class="platform-value" id="authenticityDisplay">0</div>
+                <div class="platform-value">
+                    <span id="authenticityDisplay">0</span>
+                    <span class="platform-category" id="authenticityCategory"></span>
+                </div>
             </div>
             <div class="platform-item">
                 <div class="platform-label">Credibility of Media Messages</div>
                 <div class="platform-bar">
                     <div class="platform-fill" id="credibilityBar" style="width: 0%;"></div>
                 </div>
-                <div class="platform-value" id="credibilityDisplay">0</div>
+                <div class="platform-value">
+                    <span id="credibilityDisplay">0</span>
+                    <span class="platform-category" id="credibilityCategory"></span>
+                </div>
             </div>
             <div class="platform-item">
                 <div class="platform-label">Reliability of Media Messages</div>
                 <div class="platform-bar">
                     <div class="platform-fill" id="reliabilityBar" style="width: 0%;"></div>
                 </div>
-                <div class="platform-value" id="reliabilityDisplay">0</div>
+                <div class="platform-value">
+                     <span id="reliabilityDisplay">0</span>
+                     <span class="platform-category" id="reliabilityCategory"></span>
+                </div>
             </div>
         </div>
 
@@ -697,236 +798,179 @@
     </div>
 
     <script>
-        let chartInstance = null;
+        let receptionChartInstance = null;
+        let platformChartInstance = null;
 
-        // Syncs slider and number inputs
-        function syncInputs() {
-            const sliders = document.querySelectorAll('.slider-group .slider');
-            sliders.forEach(slider => {
-                const numberInput = slider.nextElementSibling;
-                
-                // Slider -> Number Input Sync
-                slider.addEventListener('input', () => {
-                    numberInput.value = slider.value;
-                });
-                
-                // Number Input -> Slider Sync
-                numberInput.addEventListener('input', () => {
-                    const value = parseInt(numberInput.value);
-                    if (!isNaN(value) && value >= 0 && value <= 100) {
-                        slider.value = value;
-                    }
-                });
-            });
+        const BASE_COLOR = '220, 53, 69'; // The base red color in RGB
+
+        const STYLES = {
+            LIGHT: { category: 'Light', fill: `rgba(${BASE_COLOR}, 0.3)` },
+            MODERATE: { category: 'Moderate', fill: `rgba(${BASE_COLOR}, 0.65)` }, // Used for circles
+            HEAVY: { category: 'Heavy', fill: `rgba(${BASE_COLOR}, 1.0)` }
+        };
+
+        function getCategoryAndStyle(value) {
+            const val = parseFloat(value);
+            if (val <= 33.3) return STYLES.LIGHT;
+            if (val >= 33.4 && val <= 66.6) return STYLES.MODERATE;
+            return STYLES.HEAVY;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            syncInputs();
+            const sliders = document.querySelectorAll('.slider-group .slider');
+            sliders.forEach(slider => {
+                const numberInput = slider.nextElementSibling;
+                slider.addEventListener('input', () => { numberInput.value = slider.value; });
+                numberInput.addEventListener('input', () => {
+                    const value = parseInt(numberInput.value);
+                    if (!isNaN(value) && value >= 0 && value <= 100) { slider.value = value; }
+                });
+            });
         });
         
-        // Form submission handler
         document.getElementById('muddForm').addEventListener('submit', function(e) {
             e.preventDefault();
-
-            // Collect form data
             const data = {
-                name: document.getElementById('name').value,
-                age: document.getElementById('age').value,
-                gender: document.getElementById('gender').value,
-                email: document.getElementById('email').value,
-                timeSpent: document.getElementById('timeSpent').value,
-                messageReception: document.getElementById('messageReception').value,
-                appUsage: document.getElementById('appUsage').value,
-                messageProficiency: document.getElementById('messageProficiency').value,
-                authenticity: document.getElementById('authenticity').value,
-                credibility: document.getElementById('credibility').value,
-                reliability: document.getElementById('reliability').value
+                name: document.getElementById('name').value, age: document.getElementById('age').value,
+                gender: document.getElementById('gender').value, email: document.getElementById('email').value,
+                timeSpent: document.getElementById('timeSpent').value, appUsage: document.getElementById('appUsage').value,
+                messageProficiency: document.getElementById('messageProficiency').value, authenticity: document.getElementById('authenticity').value,
+                credibility: document.getElementById('credibility').value, reliability: document.getElementById('reliability').value,
+                learning: document.getElementById('learning').value, productivity: document.getElementById('productivity').value,
+                utility: document.getElementById('utility').value, gaming: document.getElementById('gaming').value,
+                socialMedia: document.getElementById('socialMedia').value, information: document.getElementById('information').value,
+                mediaAppLoad: document.getElementById('mediaAppLoad').value, mediaUsageLoad: document.getElementById('mediaUsageLoad').value
             };
-
-            // Calculate overall score (average of all percentage values)
+            const receptionValues = [
+                parseInt(data.learning), parseInt(data.productivity), parseInt(data.utility),
+                parseInt(data.gaming), parseInt(data.socialMedia), parseInt(data.information)
+            ];
+            const avgReception = Math.round(receptionValues.reduce((a, b) => a + b, 0) / receptionValues.length);
             const overallScore = Math.round((
-                parseInt(data.timeSpent) +
-                parseInt(data.messageReception) +
-                parseInt(data.appUsage) +
-                parseInt(data.messageProficiency)
+                parseInt(data.timeSpent) + avgReception + parseInt(data.appUsage) + parseInt(data.messageProficiency)
             ) / 4);
-
-            // Update dashboard with form data
-            updateDashboard(data, overallScore);
-
-            // Switch to dashboard view
+            updateDashboard(data, overallScore, avgReception);
             showDashboard();
         });
 
-        function updateDashboard(data, overallScore) {
-            // Update user details
+        function updateDashboard(data, overallScore, avgReception) {
             document.getElementById('displayName').textContent = data.name;
             document.getElementById('displayAge').textContent = data.age;
             document.getElementById('displayGender').textContent = data.gender;
             document.getElementById('displayEmail').textContent = data.email;
 
-            // Update overall score
-            document.getElementById('overallScoreText').textContent = overallScore + '%';
-            updateCircleProgress('overallScoreCircle', overallScore);
+            updateVisualElement('overallScore', overallScore);
+            updateVisualElement('timeSpent', data.timeSpent);
+            updateVisualElement('messageReception', avgReception);
+            updateVisualElement('appUsage', data.appUsage);
+            updateVisualElement('messageProficiency', data.messageProficiency);
 
-            // Update metrics
-            document.getElementById('timeSpentDisplay').textContent = data.timeSpent + '%';
-            updateCircleProgress('timeSpentCircle', data.timeSpent);
+            updateProficiencyBar('authenticity', data.authenticity);
+            updateProficiencyBar('credibility', data.credibility);
+            updateProficiencyBar('reliability', data.reliability);
 
-            document.getElementById('messageReceptionDisplay').textContent = data.messageReception + '%';
-            updateCircleProgress('messageReceptionCircle', data.messageReception);
-
-            document.getElementById('appUsageDisplay').textContent = data.appUsage + '%';
-            updateCircleProgress('appUsageCircle', data.appUsage);
-
-            document.getElementById('messageProficiencyDisplay').textContent = data.messageProficiency + '%';
-            updateCircleProgress('messageProficiencyCircle', data.messageProficiency);
-
-            // Update platform analysis
-            document.getElementById('authenticityDisplay').textContent = data.authenticity;
-            document.getElementById('authenticityBar').style.width = data.authenticity + '%';
-
-            document.getElementById('credibilityDisplay').textContent = data.credibility;
-            document.getElementById('credibilityBar').style.width = data.credibility + '%';
-
-            document.getElementById('reliabilityDisplay').textContent = data.reliability;
-            document.getElementById('reliabilityBar').style.width = data.reliability + '%';
-
-            // Create chart
-            createChart(data.messageReception);
+            const receptionData = [ data.learning, data.productivity, data.utility, data.gaming, data.socialMedia, data.information ];
+            createReceptionChart(receptionData);
+            
+            const platformData = [data.mediaAppLoad, data.mediaUsageLoad];
+            createPlatformChart(platformData);
         }
 
-        function updateCircleProgress(circleId, percentage) {
-            const circle = document.getElementById(circleId);
-            const degrees = (percentage / 100) * 360;
-            circle.style.background = `conic-gradient(#dc3545 0deg, #dc3545 ${degrees}deg, rgba(255, 255, 255, 0.1) ${degrees}deg)`;
-        }
+        function updateVisualElement(baseId, value) {
+            const style = getCategoryAndStyle(value);
+            const displayEl = document.getElementById(baseId + 'Display');
+            const categoryEl = document.getElementById(baseId + 'Category');
+            const circleEl = document.getElementById(baseId + 'Circle');
+            const textEl = document.getElementById(baseId + 'Text');
 
-        function createChart(receptionValue) {
-            const ctx = document.getElementById('receptionChart').getContext('2d');
-
-            // Destroy existing chart if it exists
-            if (chartInstance) {
-                chartInstance.destroy();
+            if (displayEl) displayEl.textContent = value + '%';
+            if (textEl) textEl.textContent = value + '%';
+            if (categoryEl) categoryEl.textContent = style.category;
+            
+            if (circleEl) {
+                const degrees = (value / 100) * 360;
+                circleEl.style.background = `conic-gradient(${style.fill} 0deg, ${style.fill} ${degrees}deg, rgba(255, 255, 255, 0.1) ${degrees}deg)`;
             }
+        }
 
-            // Create sample data based on reception value
-            const baseValue = parseInt(receptionValue);
-            const variation = 20;
+        function updateProficiencyBar(baseId, value) {
+             const style = getCategoryAndStyle(value);
+             document.getElementById(baseId + 'Display').textContent = value;
+             document.getElementById(baseId + 'Category').textContent = `(${style.category})`;
+             const barEl = document.getElementById(baseId + 'Bar');
+             barEl.style.width = value + '%';
+             
+             if (style.category === 'Moderate') {
+                 barEl.style.background = `repeating-linear-gradient(45deg, rgba(${BASE_COLOR}, 0.7), rgba(${BASE_COLOR}, 0.7) 5px, rgba(${BASE_COLOR}, 0.5) 5px, rgba(${BASE_COLOR}, 0.5) 10px)`;
+             } else {
+                 barEl.style.background = style.fill;
+             }
+        }
 
-            chartInstance = new Chart(ctx, {
+        function createStripePattern(ctx) {
+            const patternCanvas = document.createElement('canvas');
+            const patternCtx = patternCanvas.getContext('2d');
+            patternCanvas.width = 8;
+            patternCanvas.height = 8;
+            patternCtx.strokeStyle = `rgba(${BASE_COLOR}, 0.8)`;
+            patternCtx.lineWidth = 2;
+            patternCtx.beginPath();
+            patternCtx.moveTo(0, 8);
+            patternCtx.lineTo(8, 0);
+            patternCtx.stroke();
+            return ctx.createPattern(patternCanvas, 'repeat');
+        }
+
+        function createCategorizedBarChart(canvasId, labels, data) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            const lightData = data.map(v => getCategoryAndStyle(v).category === 'Light' ? v : null);
+            const moderateData = data.map(v => getCategoryAndStyle(v).category === 'Moderate' ? v : null);
+            const heavyData = data.map(v => getCategoryAndStyle(v).category === 'Heavy' ? v : null);
+            
+            return new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Learning', 'Productivity', 'Utility and Services', 'Gaming', 'Social Media', 'Information'],
+                    labels: labels,
                     datasets: [
-                        {
-                            label: 'Light',
-                            data: [
-                                Math.max(0, baseValue - variation),
-                                Math.max(0, baseValue - variation + 10),
-                                Math.max(0, baseValue - variation),
-                                Math.max(0, baseValue - variation + 10),
-                                Math.max(0, baseValue - variation),
-                                Math.max(0, baseValue - variation)
-                            ],
-                            backgroundColor: 'rgba(220, 53, 69, 0.3)',
-                            borderColor: 'rgba(220, 53, 69, 0.5)',
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'Moderate',
-                            data: [
-                                baseValue,
-                                Math.max(0, baseValue - 20),
-                                baseValue,
-                                Math.max(0, baseValue - 20),
-                                baseValue,
-                                baseValue
-                            ],
-                            backgroundColor: 'rgba(220, 53, 69, 0.6)',
-                            borderColor: 'rgba(220, 53, 69, 0.8)',
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'Heavy',
-                            data: [
-                                Math.min(100, baseValue + variation),
-                                Math.min(100, baseValue + variation),
-                                Math.min(100, baseValue + variation),
-                                Math.min(100, baseValue + variation),
-                                Math.min(100, baseValue + variation),
-                                Math.min(100, baseValue + variation)
-                            ],
-                            backgroundColor: 'rgba(220, 53, 69, 1)',
-                            borderColor: 'rgba(220, 53, 69, 1)',
-                            borderWidth: 1
-                        }
+                        { label: 'Light', data: lightData, backgroundColor: STYLES.LIGHT.fill },
+                        { label: 'Moderate', data: moderateData, backgroundColor: createStripePattern(ctx) },
+                        { label: 'Heavy', data: heavyData, backgroundColor: STYLES.HEAVY.fill }
                     ]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    aspectRatio: 1.2,
-                    interaction: {
-                        intersect: false
-                    },
-                    animation: {
-                        duration: 1000
-                    },
+                    responsive: true, maintainAspectRatio: false,
                     plugins: {
-                        legend: {
-                            labels: {
-                                color: '#ffffff',
-                                font: {
-                                    size: 10
-                                }
-                            }
-                        }
+                        legend: { display: true, labels: { color: '#ffffff' } },
+                        tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${ctx.formattedValue}%` } }
                     },
                     scales: {
-                        x: {
-                            ticks: {
-                                color: '#ffffff',
-                                maxRotation: 45,
-                                font: {
-                                    size: 8
-                                }
-                            },
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            }
-                        },
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            ticks: {
-                                color: '#ffffff',
-                                stepSize: 25,
-                                font: {
-                                    size: 8
-                                }
-                            },
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            }
-                        }
+                        x: { stacked: true, ticks: { color: '#ffffff', font: { size: 10 }}, grid: { color: 'rgba(255, 255, 255, 0.1)' }},
+                        y: { stacked: true, beginAtZero: true, max: 100, ticks: { color: '#ffffff', stepSize: 25, font: { size: 10 }}, grid: { color: 'rgba(255, 255, 255, 0.1)' }}
                     }
                 }
             });
         }
 
+        function createReceptionChart(receptionData) {
+            if (receptionChartInstance) receptionChartInstance.destroy();
+            const labels = ['Learning', 'Productivity', 'Utility/Services', 'Gaming', 'Social Media', 'Information'];
+            receptionChartInstance = createCategorizedBarChart('receptionChart', labels, receptionData);
+        }
+        
+        function createPlatformChart(platformData) {
+            if (platformChartInstance) platformChartInstance.destroy();
+            const labels = ['Application Load', 'Usage Load'];
+            platformChartInstance = createCategorizedBarChart('platformChart', labels, platformData);
+        }
+
         function showDashboard() {
             document.getElementById('formContainer').classList.add('hidden');
             document.getElementById('dashboardContainer').classList.remove('hidden');
-
-            // Add animation for platform bars after a delay
             setTimeout(() => {
                 document.querySelectorAll('.platform-fill').forEach(bar => {
                     const width = bar.style.width;
                     bar.style.width = '0%';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 100);
+                    setTimeout(() => { bar.style.width = width; }, 100);
                 });
             }, 500);
         }
@@ -934,12 +978,8 @@
         function showForm() {
             document.getElementById('dashboardContainer').classList.add('hidden');
             document.getElementById('formContainer').classList.remove('hidden');
-
-            // Destroy chart when going back to form
-            if (chartInstance) {
-                chartInstance.destroy();
-                chartInstance = null;
-            }
+            if (receptionChartInstance) { receptionChartInstance.destroy(); receptionChartInstance = null; }
+            if (platformChartInstance) { platformChartInstance.destroy(); platformChartInstance = null; }
         }
     </script>
 </body>
